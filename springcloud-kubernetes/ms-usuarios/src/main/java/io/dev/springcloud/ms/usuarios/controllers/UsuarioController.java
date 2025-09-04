@@ -40,7 +40,7 @@ public class UsuarioController {
     public ResponseEntity<?> editar(@RequestBody Usuario usuario, @PathVariable Long id) {
         Optional<Usuario> usuarioId = usuarioService.porId(id);
         if(usuarioId.isPresent()) {
-            Usuario usuariodb = new Usuario();
+            Usuario usuariodb = usuarioId.get();
             usuariodb.setNombre(usuario.getNombre());
             usuariodb.setEmail(usuario.getEmail());
             usuariodb.setPassword(usuario.getPassword());
