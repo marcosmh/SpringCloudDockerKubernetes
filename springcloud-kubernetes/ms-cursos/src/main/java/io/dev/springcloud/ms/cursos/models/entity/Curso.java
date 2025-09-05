@@ -1,6 +1,8 @@
 package io.dev.springcloud.ms.cursos.models.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="cursos")
@@ -10,6 +12,7 @@ public class Curso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     @Column(name="nombre")
     private String nombre;
 
