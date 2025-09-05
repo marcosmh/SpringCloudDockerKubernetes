@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsuarioServiceImpl implements  UsuarioService {
+public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -38,4 +38,23 @@ public class UsuarioServiceImpl implements  UsuarioService {
     public void eliminar(Long id) {
         usuarioRepository.deleteById(id);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<Usuario> porEmail(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<Usuario> buscarPorEmail(String email) {
+        return usuarioRepository.buscarPorEmail(email);
+    }
+
+    @Override
+    public boolean existePorEmail(String email) {
+        return usuarioRepository.existsByEmail(email);
+    }
+
+
 }

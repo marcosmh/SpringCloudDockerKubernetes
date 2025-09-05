@@ -16,5 +16,10 @@ public interface UsuarioService {
 
     void eliminar(Long id);
 
+    Optional<Usuario> porEmail(String email);
+
+    Optional<Usuario> buscarPorEmail(String email);
+
+    boolean existePorEmail(String email);
 
 }
