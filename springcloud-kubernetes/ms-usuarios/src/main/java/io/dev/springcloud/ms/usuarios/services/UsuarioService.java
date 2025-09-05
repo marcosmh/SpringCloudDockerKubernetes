@@ -22,4 +22,6 @@ public interface UsuarioService {
 
     boolean existePorEmail(String email);
 
+
+
 }
