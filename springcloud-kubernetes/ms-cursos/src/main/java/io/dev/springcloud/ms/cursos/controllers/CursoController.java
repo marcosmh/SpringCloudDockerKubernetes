@@ -32,7 +32,7 @@ public class CursoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> detalle(@PathVariable       Long id) {
-       Optional<Curso> curso = cursoService.porId(id);
+       Optional<Curso> curso = cursoService.porIdConUsuaros(id);   //cursoService.porId(id);
        if(curso.isPresent()) {
            return ResponseEntity.ok(curso);
        }
