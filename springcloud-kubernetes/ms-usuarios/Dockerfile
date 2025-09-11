@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-alpine as builder
+FROM openjdk:18-jdk-alpine as builder
 
 WORKDIR /app/ms-usuarios
 
@@ -13,12 +13,16 @@ COPY ./ms-usuarios/src ./src
 
 RUN ./mvnw clean package -DskipTests
 
-FROM openjdk:17-jdk-alpine
+FROM openjdk:18-jdk-alpine
 
 WORKDIR /app
+
+RUN mkdir ./logs
 
 COPY --from=builder /app/ms-usuarios/target/ms-usuarios-0.0.1-SNAPSHOT.jar .
 
 EXPOSE 8001
 
-ENTRYPOINT ["java","-jar","ms-usuarios-0.0.1-SNAPSHOT.jar"]
+#ENTRYPOINT ["java","-jar","ms-usuarios-0.0.1-SNAPSHOT.jar"]
+
+CMD ["java","-jar","ms-usuarios-0.0.1-SNAPSHOT.jar"]
