@@ -49,6 +49,7 @@ services:
       - spring
     depends_on:
       - postgres13
+      - ms-usuarios
     restart: always
 volumes:
   data-mysql:
