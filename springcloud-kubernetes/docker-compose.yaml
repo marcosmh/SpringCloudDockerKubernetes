@@ -30,10 +30,11 @@ services:
       - spring
   ms-usuarios:
     container_name: ms-usuarios
+    image: markcode79/usuarios:latest
     #image: usuarios:latest
-    build:
-      context: ./
-      dockerfile: ./ms-usuarios/Dockerfile
+    #build:
+    #  context: ./
+    #  dockerfile: ./ms-usuarios/Dockerfile
     ports:
       - "8001:8001"
     env_file: ./ms-usuarios/.env
@@ -44,10 +45,11 @@ services:
     restart: always
   ms-cursos:
     container_name: ms-cursos
+    image: markcode79/cursos:latest
     #image: cursos:latest
-    build:
-      context: ./
-      dockerfile: ./ms-cursos/Dockerfile
+    #build:
+    #  context: ./
+    #  dockerfile: ./ms-cursos/Dockerfile
     ports:
       - "8002:8002"
     env_file: ./ms-cursos/.env
@@ -56,7 +58,7 @@ services:
     depends_on:
       - postgres13
       - ms-usuarios
-    restart: always
+    restart: always 
 volumes:
   data-mysql:
     name: data-mysql
